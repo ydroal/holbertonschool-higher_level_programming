@@ -25,7 +25,7 @@ if __name__ == '__main__':
     elif argv[2] == op[2]:
         res = a * b
     elif argv[2] == op[3]:
-        res = a / b
+        res = a // b
 
     print('{} {} {} = {}'.format(a, argv[2], b, res))
     exit
