@@ -19,13 +19,13 @@ if __name__ == '__main__':
     b = int(argv[3])
     res = 0
     if argv[2] == op[0]:
-        res = a + b
+        res = add(a, b)
     elif argv[2] == op[1]:
-        res = a - b
+        res = sub(a, b)
     elif argv[2] == op[2]:
-        res = a * b
+        res = mul(a, b)
     elif argv[2] == op[3]:
-        res = a // b
+        res = div(a, b)
 
     print('{} {} {} = {}'.format(a, argv[2], b, res))
     exit
