@@ -21,7 +21,7 @@ Similarities:
 Differences:
 
 	* Strings are used to store sequences of characters (e.g. words, sentences, etc.).  
-	  Lists are used to store sequences of any type of data (e.g. numbers, strings, other lists, etc.).
+	Lists are used to store sequences of any type of data (e.g. numbers, strings, other lists, etc.).
 	* Strings are immutable, meaning their contents cannot be changed after they are created.   
 	  Lists are mutable, meaning their contents can be modified.
 	* Strings can be concatenated using the + operator, but lists can be concatenated using  
