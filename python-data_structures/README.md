@@ -1,6 +1,6 @@
 # Python - Data Structures: Lists, Tuples
 
-This is the project with Python.
+This is the project with Python.  
 learn about Python programming.
 
 
@@ -16,14 +16,14 @@ Similarities:
 
 	* Both are ordered collections of items
 	* Both can be iterated over
-	* Both can be indexed and sliced  
+	* Both can be indexed and sliced
 
 Differences:
 
 	* Strings are used to store sequences of characters (e.g. words, sentences, etc.).  
 	  Lists are used to store sequences of any type of data (e.g. numbers, strings, other lists, etc.).
-	* __Strings are immutable__, meaning their contents cannot be changed after they are created.   
-	  __Lists are mutable__, meaning their contents can be modified.
+	* Strings are immutable, meaning their contents cannot be changed after they are created.   
+	  Lists are mutable, meaning their contents can be modified.
 	* Strings can be concatenated using the + operator, but lists can be concatenated using  
 	  the + operator or the extend() method.
 	* Strings have many built-in methods for manipulation (e.g. upper(), lower(), replace(), etc.), whereas lists have more general methods for manipulation (e.g. append(), remove(), etc.)
@@ -51,7 +51,6 @@ as queues:  collections.deque (queue.append() and queue.popleft())
 * __When to use tuples versus lists__
 tuples are immutable, meaning their contents cannot be modified after they are created.  
 This makes them useful for storing data that should not be changed, such as a collection of constant values.  
-
 A list is mutable, meaning its contents can be modified after it is created.  
 This makes it useful for storing data that may change, such as a collection of user inputs.
 
@@ -83,7 +82,8 @@ t = (1, 2, 3)
 
 
 * __What is sequence unpacking__  
-Way to assign the elements of a sequence (such as a tuple or list) to multiple variables in a single assignment statement. It is the inverse of tuple packing, where we create a tuple by listing its elements separated by commas.
+Way to assign the elements of a sequence (such as a tuple or list) to multiple variables in a single assignment statement.  
+It is the inverse of tuple packing, where we create a tuple by listing its elements separated by commas.
 
 
 ## Tasks
