@@ -16,7 +16,8 @@ Similarities:
 
 	* Both are ordered collections of items
 	* Both can be iterated over
-	* Both can be indexed and sliced
+	* Both can be indexed and sliced  
+
 Differences:
 
 	* Strings are used to store sequences of characters (e.g. words, sentences, etc.).  
