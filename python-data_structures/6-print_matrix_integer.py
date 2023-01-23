@@ -2,6 +2,9 @@
 
 
 def print_matrix_integer(matrix=[[]]):
+    if matrix is None or matrix == [[]]:
+        print()
+        return
     for list in matrix:
         for i in range(len(list)):
             idx = i
