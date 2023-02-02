@@ -1,0 +1,27 @@
+>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+# test: with string
+>>> text_indentation('Hello, How are you? I hope you are fine.')
+Hello, How are you?
+<BLANKLINE>
+I hope you are fine.
+<BLANKLINE>
+
+# test: with int
+>>> text_indentation(5)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+# test: without argument
+>>> text_indentation()
+Traceback (most recent call last):
+TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+# test: with None
+>>> text_indentation(None)
+Traceback (most recent call last):
+TypeError: text must be a string
+
+# test: with space
+>>> text_indentation('     ')
+
