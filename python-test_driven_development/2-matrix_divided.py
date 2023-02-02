@@ -22,11 +22,11 @@ def matrix_divided(matrix, div):
     if not isinstance(matrix, list) or \
             not all(isinstance(el, list) for el in matrix):
         raise TypeError(
-            'matrix must be a matrix(list of lists) of integers/floats')
+            'matrix must be a matrix (list of lists) of integers/floats')
 
     if not all(isinstance(el, (int, float)) for li in matrix for el in li):
         raise TypeError(
-            'matrix must be a matrix(list of lists) of integers/floats')
+            'matrix must be a matrix (list of lists) of integers/floats')
 
     length = [len(matrix[i]) for i in range(len(matrix))]
     if not all(val == length[0] for val in length):
