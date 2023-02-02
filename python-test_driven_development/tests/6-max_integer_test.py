@@ -21,6 +21,12 @@ class TestMaxInteger(unittest.TestCase):
         with self.assertRaises(TypeError):
             max_integer([1, '2', 3, '4'])
 
+    def test_strings(self):
+        '''test: with strings'''
+
+        s = 'HelloWorld'
+        self.assertEqual(max_integer(s), 'r')
+
     def test_noargs(self):
         '''test: without args'''
         self.assertEqual(max_integer(), None)
@@ -28,6 +34,14 @@ class TestMaxInteger(unittest.TestCase):
     def test_float(self):
         '''test: with float'''
         self.assertEqual(max_integer([1.2, 2.5, 3, 4.41]), 4.41)
+
+    def test_max_in_the_middle(self):
+        '''test: max_in_the_middle'''
+        self.assertEqual(max_integer([12, 51, 33]), 51)
+
+    def test_one_element(self):
+        '''test: with float'''
+        self.assertEqual(max_integer([77]), 77)
 
 
 if __name__ == '__main__':
