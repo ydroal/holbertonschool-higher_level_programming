@@ -19,9 +19,6 @@ def matrix_divided(matrix, div):
     Returns:
         list: A new matrix with result of calculation.
     '''
-    if not matrix or div is None:
-        return
-
     if not isinstance(matrix, list) or \
             not all(isinstance(el, list) for el in matrix):
         raise TypeError(
