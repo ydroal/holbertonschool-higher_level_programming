@@ -1,0 +1,30 @@
+>>> MyList = __import__('1-my_list').MyList
+
+# test: is MyList subclass of list
+>>> issubclass(MyList, list)
+True
+
+#test: method of list (append)
+>>> my_list = MyList()
+>>> my_list.append(1)
+>>> my_list.append(4)
+>>> my_list.append(2)
+>>> my_list.append(3)
+>>> my_list.append(5)
+>>> print(my_list)
+[1, 4, 2, 3, 5]
+
+#test: print_sorted() with positive and negative interger
+>>> my_list = MyList()
+>>> my_list.append(5)
+>>> my_list.append(-2)
+>>> my_list.append(100)
+>>> my_list.append(-232)
+>>> my_list.append(78)
+>>> my_list.print_sorted()
+[-232, -2, 5, 78, 100]
+
+#test: print_sorted() without argument
+>>> my_list = MyList()
+>>> my_list.print_sorted()
+[]
