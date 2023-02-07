@@ -1,0 +1,28 @@
+>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
+# create new_class
+>>> bg = BaseGeometry()
+
+# Test the method area()
+>>> bg.area()
+Traceback (most recent call last):
+Exception: area() is not implemented
+
+# Test the method integer_validator() with int
+>>> bg.integer_validator("my_int", 12)
+
+
+# Test the method integer_validator() with str (TypeError)
+>>> bg.integer_validator("name", "John")
+Traceback (most recent call last):
+TypeError: name must be an integer
+
+#  Test the method integer_validator() with 0 (ValueError)
+>>> bg.integer_validator("age", 0)
+Traceback (most recent call last):
+ValueError: age must be greater than 0
+
+#  Test the method integer_validator() with -4 (ValueError)
+>>> bg.integer_validator("age", -4)
+Traceback (most recent call last):
+ValueError: age must be greater than 0
