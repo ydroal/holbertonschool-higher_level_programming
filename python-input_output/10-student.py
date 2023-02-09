@@ -20,7 +20,7 @@ class Student:
         '''
 
         j_dic = self.__dict__
-        if not attrs:
+        if not attrs and type(attrs) is not list:
             return j_dic
 
         else:
