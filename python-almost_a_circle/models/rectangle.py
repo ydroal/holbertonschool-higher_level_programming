@@ -20,6 +20,12 @@ class Rectangle(Base):
 
         return self.__width * self.__height
 
+    def display(self):
+        '''Method that prints in stdout the Rectangle with the character #'''
+
+        return print('\n'.join(('#' * self.__width)
+                     for _ in range(self.__height)))
+
     @property
     def width(self):
         '''Returns width'''

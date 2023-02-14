@@ -2,6 +2,8 @@
 '''Unit test for Base class'''
 
 import unittest
+import sys
+from io import StringIO
 from models.rectangle import Rectangle
 
 
@@ -112,6 +114,14 @@ class Test_Rectangle(unittest.TestCase):
 
         with self.assertRaises(TypeError):
             r = Rectangle('Hello', 2)
+
+    def test_display(self):
+        r = Rectangle(4, 3)
+        expected_output = "####\n####\n####\n"
+        with StringIO() as output:
+            sys.stdout = output
+            r.display()
+            self.assertEqual(output.getvalue(), expected_output)
 
 
 if __name__ == '__main__':
