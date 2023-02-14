@@ -8,11 +8,17 @@ class Rectangle(Base):
 
     def __init__(self, width, height, x=0, y=0, id=None):
         '''Initialize'''
+
         super().__init__(id)
         self.width = width
         self.height = height
         self.x = x
         self.y = y
+
+    def area(self):
+        '''Method that returns the area value of the Rectangle instance.'''
+
+        return self.__width * self.__height
 
     @property
     def width(self):

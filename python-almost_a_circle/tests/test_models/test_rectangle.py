@@ -37,6 +37,10 @@ class Test_Rectangle(unittest.TestCase):
             r = Rectangle(-10, 30)
         self.assertEqual(str(context.exception), 'width must be > 0')
 
+        with self.assertRaises(ValueError) as context:
+            r = Rectangle(0, 2)
+        self.assertEqual(str(context.exception), 'width must be > 0')
+
     def test_height(self):
         r = Rectangle(10, 20)
         r.height = 30
@@ -50,14 +54,26 @@ class Test_Rectangle(unittest.TestCase):
             r = Rectangle(30, -10)
         self.assertEqual(str(context.exception), 'height must be > 0')
 
+        with self.assertRaises(ValueError) as context:
+            r = Rectangle(1, 0)
+        self.assertEqual(str(context.exception), 'height must be > 0')
+
     def test_x(self):
         r = Rectangle(10, 20)
         r.x = 30
         self.assertEqual(r.x, 30)
 
         with self.assertRaises(TypeError) as context:
+            r = Rectangle(1, 2, '3')
+        self.assertEqual(str(context.exception), 'x must be an integer')
+
+        with self.assertRaises(TypeError) as context:
             r.x = 'Hello'
         self.assertEqual(str(context.exception), 'x must be an integer')
+
+        with self.assertRaises(ValueError) as context:
+            r = Rectangle(1, 2, -3)
+        self.assertEqual(str(context.exception), 'x must be >= 0')
 
         with self.assertRaises(ValueError) as context:
             r.x = -10
@@ -69,12 +85,33 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(r.y, 30)
 
         with self.assertRaises(TypeError) as context:
+            r = Rectangle(1, 2, 3, '4')
+        self.assertEqual(str(context.exception), 'y must be an integer')
+
+        with self.assertRaises(TypeError) as context:
             r.y = 'Hello'
         self.assertEqual(str(context.exception), 'y must be an integer')
 
         with self.assertRaises(ValueError) as context:
+            r = Rectangle(1, 2, 3, -4)
+        self.assertEqual(str(context.exception), 'y must be >= 0')
+
+        with self.assertRaises(ValueError) as context:
             r.y = -10
         self.assertEqual(str(context.exception), 'y must be >= 0')
+
+    def test_area(self):
+        r = Rectangle(3, 2)
+        self.assertEqual(r.area(), 6)
+
+        with self.assertRaises(TypeError):
+            r = Rectangle(3)
+
+        with self.assertRaises(ValueError):
+            r = Rectangle(-1, 2)
+
+        with self.assertRaises(TypeError):
+            r = Rectangle('Hello', 2)
 
 
 if __name__ == '__main__':
