@@ -33,14 +33,18 @@ class Rectangle(Base):
         print('\n'.join((' ' * self.__x + '#' * self.__width)
               for _ in range(self.__height)))
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         '''Method that assigns an argument to each attribute.'''
 
-        len_args = len(args)
-        att_name = ['id', 'width', 'height', 'x', 'y']
-        for i in range(len_args):
-            name = att_name[i]
-            setattr(self, name, args[i])
+        if args and len(args != 0):
+            len_args = len(args)
+            att_name = ['id', 'width', 'height', 'x', 'y']
+            for i in range(len_args):
+                name = att_name[i]
+                setattr(self, name, args[i])
+
+        for k, v in kwargs.items():
+            setattr(self, k, v)
 
     @property
     def width(self):
