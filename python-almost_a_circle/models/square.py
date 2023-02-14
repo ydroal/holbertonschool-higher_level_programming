@@ -16,6 +16,19 @@ class Square(Rectangle):
         return (f'[Square] ({self.id}) {self.x}/{self.y} - '
                 f'{self.width}')
 
+    def update(self, *args, **kwargs):
+        '''Method to assigns attributes'''
+
+        if args and len(args) != 0:
+            len_args = len(args)
+            att_name = ['id', 'size', 'x', 'y']
+            for i in range(len_args):
+                name = att_name[i]
+                setattr(self, name, args[i])
+
+        for k, v in kwargs.items():
+            setattr(self, k, v)
+
     @property
     def size(self):
         '''Returns size'''
