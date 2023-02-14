@@ -29,8 +29,9 @@ class Rectangle(Base):
     def display(self):
         '''Method that prints in stdout the Rectangle with the character #'''
 
-        return print('\n'.join(('#' * self.__width)
-                     for _ in range(self.__height)))
+        print('\n' * self.__y, end='')
+        print('\n'.join((' ' * self.__x + '#' * self.__width)
+              for _ in range(self.__height)))
 
     @property
     def width(self):
