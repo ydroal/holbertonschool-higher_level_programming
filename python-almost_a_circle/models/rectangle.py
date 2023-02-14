@@ -15,6 +15,12 @@ class Rectangle(Base):
         self.x = x
         self.y = y
 
+    def __str__(self):
+        '''Method that return a string to print the Rectangle instance.'''
+
+        return (f'[Rectangle] ({self.id}) {self.__x}/{self.__y} - '
+                f'{self.__width}/{self.__height}')
+
     def area(self):
         '''Method that returns the area value of the Rectangle instance.'''
 
