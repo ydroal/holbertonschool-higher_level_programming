@@ -33,6 +33,15 @@ class Rectangle(Base):
         print('\n'.join((' ' * self.__x + '#' * self.__width)
               for _ in range(self.__height)))
 
+    def update(self, *args):
+        '''Method that assigns an argument to each attribute.'''
+
+        len_args = len(args)
+        att_name = ['id', 'width', 'height', 'x', 'y']
+        for i in range(len_args):
+            name = att_name[i]
+            setattr(self, name, args[i])
+
     @property
     def width(self):
         '''Returns width'''
