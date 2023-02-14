@@ -4,7 +4,7 @@ from models.base import Base
 
 
 class Rectangle(Base):
-    '''Define a BaseGeometry'''
+    '''Define a Rectangle'''
 
     def __init__(self, width, height, x=0, y=0, id=None):
         '''Initialize'''
@@ -36,7 +36,7 @@ class Rectangle(Base):
     def update(self, *args, **kwargs):
         '''Method that assigns an argument to each attribute.'''
 
-        if args and len(args != 0):
+        if args and len(args) != 0:
             len_args = len(args)
             att_name = ['id', 'width', 'height', 'x', 'y']
             for i in range(len_args):
@@ -45,6 +45,15 @@ class Rectangle(Base):
 
         for k, v in kwargs.items():
             setattr(self, k, v)
+
+    def to_dictionary(self):
+        '''Method that returns the dictionary representation of a Rectangle'''
+
+        new_dict = dict(
+            id=self.id, width=self.width,
+            height=self.height, x=self.x, y=self.y
+        )
+        return new_dict
 
     @property
     def width(self):
