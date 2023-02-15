@@ -53,3 +53,17 @@ class Base:
             res = json.dumps(list_dictionaries)
 
         return res
+
+    @staticmethod
+    def from_json_string(json_string):
+        '''
+        Method that returns the list of the JSON string representation
+        of list(json_string)
+        '''
+
+        if not json_string:
+            res = []
+        else:
+            res = json.loads(json_string)
+
+        return res
