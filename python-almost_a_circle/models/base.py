@@ -43,6 +43,21 @@ class Base:
         with open(file_name, 'w') as json_file:
             json_file.write(json_string)
 
+    @classmethod
+    def create(cls, **dictionary):
+        '''Method hat returns an instance with all attributes already set'''
+
+        class_name = cls.__name__
+
+        if class_name == 'Rectangle':
+            new_class = cls(10, 20)
+
+        elif class_name == 'Square':
+            new_class = cls(10)
+
+        new_class.update(**dictionary)
+        return new_class
+
     @staticmethod
     def to_json_string(list_dictionaries):
         '''Method that returns the JSON string representation of list'''
