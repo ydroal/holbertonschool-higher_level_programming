@@ -58,6 +58,28 @@ class Base:
         new_class.update(**dictionary)
         return new_class
 
+    @classmethod
+    def load_from_file(cls):
+        '''Method that returns a list of instances'''
+
+        class_name = cls.__name__
+        file_name = class_name + '.json'
+
+        # Read JSON string
+        with open(file_name) as json_file:
+            json_string = json_file.read()
+
+        # Convert JSON string to list of dictionaries
+        dic = cls.from_json_string(json_string)
+
+        # Create instances
+        list_instances = []
+        for d in dic:
+            instance = cls.create(**d)
+            list_instances.append(instance)
+
+        return list_instances
+
     @staticmethod
     def to_json_string(list_dictionaries):
         '''Method that returns the JSON string representation of list'''
