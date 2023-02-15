@@ -66,8 +66,11 @@ class Base:
         file_name = class_name + '.json'
 
         # Read JSON string
-        with open(file_name) as json_file:
-            json_string = json_file.read()
+        try:
+            with open(file_name) as json_file:
+                json_string = json_file.read()
+        except FileNotFoundError:
+            return []
 
         # Convert JSON string to list of dictionaries
         dic = cls.from_json_string(json_string)
