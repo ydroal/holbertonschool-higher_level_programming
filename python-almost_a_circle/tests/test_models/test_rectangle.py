@@ -4,7 +4,7 @@
 import unittest
 import sys
 from io import StringIO
-from rectangle import Rectangle
+from models.rectangle import Rectangle
 
 
 class Test_Rectangle(unittest.TestCase):
