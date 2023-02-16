@@ -123,6 +123,28 @@ class Test_Rectangle(unittest.TestCase):
             r.display()
             self.assertEqual(output.getvalue(), expected_output)
 
+    def test_str(self):
+        r = Rectangle(4, 6, 2, 1, 12)
+        expected_str = '[Rectangle] (12) 2/1 - 4/6'
+        self.assertEqual(str(r), expected_str)
+
+    def test_update(self):
+        r = Rectangle(10, 10, 10, 10)
+        r.update(89)
+        self.assertEqual(str(r), '[Rectangle] (89) 10/10 - 10/10')
+
+        r.update(89, 2, 3, 4, 5)
+        self.assertEqual(str(r), '[Rectangle] (89) 4/5 - 2/3')
+
+        r.update(x=1, height=2, y=3, width=4)
+        self.assertEqual(str(r), '[Rectangle] (89) 1/3 - 4/2')
+
+    def test_to_dictionary(self):
+        r = Rectangle(10, 2, 1, 9, 1)
+        r_dictionary = r.to_dictionary()
+        self.assertEqual(
+            r_dictionary, {'x': 1, 'y': 9, 'id': 1, 'height': 2, 'width': 10})
+
 
 if __name__ == '__main__':
     unittest.main()
