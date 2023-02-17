@@ -36,9 +36,8 @@ class Test_Rectangle(unittest.TestCase):
             r = Rectangle('Hello', 30)
         self.assertEqual(str(context.exception), 'width must be an integer')
 
-        with self.assertRaises(ValueError) as context:
-            r = Rectangle(-1, 2)
-        self.assertEqual(str(context.exception), 'width must be > 0')
+        self.assertRaisesRegex(
+            ValueError, 'width must be > 0', Rectangle, -1, 2)
 
         with self.assertRaises(ValueError) as context:
             r = Rectangle(0, 2)
@@ -137,9 +136,14 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(str(r), expected_str)
 
     def test_update(self):
+        # No update
         r = Rectangle(10, 10, 10, 10, 10)
         r.update()
-        self.assertEqual(str(r), '[Rectangle] (10) 10/10 - 10/10')
+        self.assertEqual(r.id, 10)
+        self.assertEqual(r.width, 10)
+        self.assertEqual(r.height, 10)
+        self.assertEqual(r.x, 10)
+        self.assertEqual(r.y, 10)
 
         r.update(89)
         self.assertEqual(str(r), '[Rectangle] (89) 10/10 - 10/10')
@@ -178,22 +182,20 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(str(r3), '[Rectangle] (89) 3/0 - 1/2')
 
     def test_save_to_file(self):
-        r1 = Rectangle(10, 20, 1, 2, 123)
-        r2 = Rectangle(30, 40, 3, 4, 456)
-        Rectangle.save_to_file([r1, r2])
+        Rectangle.save_to_file([])
         with open('Rectangle.json') as file:
-            expected_op = ('[{"id": 123, "width": 10, "height": 20,'
-                           ' "x": 1, "y": 2}, {"id": 456, "width": 30,'
-                           ' "height": 40, "x": 3, "y": 4}]')
-            self.assertEqual(file.read(), expected_op)
+            self.assertEqual(file.read(), '[]')
 
         Rectangle.save_to_file(None)
         with open('Rectangle.json') as file:
             self.assertEqual(file.read(), '[]')
 
-        Rectangle.save_to_file([])
+        r1 = Rectangle(10, 20, 1, 2, 123)
+        Rectangle.save_to_file([r1])
         with open('Rectangle.json') as file:
-            self.assertEqual(file.read(), '[]')
+            expected_op = ('[{"id": 123, "width": 10, "height": 20,'
+                           ' "x": 1, "y": 2}]')
+            self.assertEqual(file.read(), expected_op)
 
     def test_load_from_file(self):
         r = Rectangle.load_from_file()
