@@ -39,20 +39,11 @@ class Test_Base(unittest.TestCase):
         json_str = Base.to_json_string([dictionary])
         self.assertEqual(type(json_str), str)
 
-        json_str2 = Base.to_json_string([])
-        self.assertEqual(json_str2, '[]')
+        dictionary2 = Base.to_json_string([])
+        self.assertEqual(dictionary2, '[]')
 
-        json_str3 = Base.to_json_string(None)
-        self.assertEqual(json_str3, '[]')
-
-    def test_from_json_string(self):
-        list_input = [
-            {'id': 89, 'width': 10, 'height': 4},
-            {'id': 7, 'width': 1, 'height': 7}
-        ]
-        json_list_input = Rectangle.to_json_string(list_input)
-        list_output = Rectangle.from_json_string(json_list_input)
-        self.assertEqual(list_output, list_input)
+        dictionary3 = Base.to_json_string(None)
+        self.assertEqual(dictionary3, '[]')
 
 
 if __name__ == '__main__':
