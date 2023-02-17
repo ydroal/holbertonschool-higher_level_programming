@@ -2,6 +2,7 @@
 '''Unit test for Square class'''
 
 import unittest
+import os
 from models.square import Square
 
 
@@ -115,12 +116,14 @@ class Test_Square(unittest.TestCase):
             read = file.read()
         expected_output = '[]'
         self.assertEqual(read, expected_output)
+        os.remove(Square.json)
 
     def test_save_to_file_emplist2(self):
         Square.save_to_file(None)
         with open('Square.json', 'r') as file:
             read = file.read()
             self.assertEqual(read, '[]')
+        os.remove(Square.json)
 
     def test_load_from_file(self):
         s = Square.load_from_file()
