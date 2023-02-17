@@ -3,7 +3,6 @@
 
 import unittest
 from models.square import Square
-from models.base import Base
 
 
 class Test_Square(unittest.TestCase):
@@ -104,21 +103,23 @@ class Test_Square(unittest.TestCase):
         self.assertEqual(str(s3), '[Square] (89) 2/3 - 1')
 
     def test_save_to_file(self):
-        s = Square(10)
-        Square.save_to_file([s])
-        with open('Square.json') as file:
-            op = file.read()
-            self.assertEqual(type(op), str)
+        s1 = Square(10, 5, 5, 1)
+        Square.save_to_file([s1])
+        with open('Square.json', 'r') as file:
+            read = file.read()
+            self.assertEqual(read, '[{"id": 1, "size": 10, "x": 5, "y": 5}]')
 
+    def test_save_to_file_list_with_emp(self):
         Square.save_to_file([])
-        with open('Square.json') as file:
-            op = file.read()
-            self.assertEqual(op, '[]')
+        with open('Square.json', 'r') as file:
+            read = file.read()
+            self.assertEqual(read, '[]')
 
+    def test_save_to_file_emp2(self):
         Square.save_to_file(None)
-        with open('Square.json') as file:
-            op = file.read()
-            self.assertEqual(op, '[]')
+        with open('Square.json', 'r') as file:
+            read = file.read()
+            self.assertEqual(read, '[]')
 
     def test_load_from_file(self):
         s = Square.load_from_file()
