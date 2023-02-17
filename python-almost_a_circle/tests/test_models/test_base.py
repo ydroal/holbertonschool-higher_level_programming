@@ -53,6 +53,25 @@ class Test_Base(unittest.TestCase):
         list_output = Rectangle.from_json_string(json_list_input)
         self.assertEqual(list_output, list_input)
 
+    def test_save_to_file(self):
+        r1 = Rectangle(10, 20, 1, 2, 123)
+        Rectangle.save_to_file([])
+        with open('Rectangle.json', 'r') as file:
+            read = file.read()
+        self.assertEqual(read, '[]')
+
+        Rectangle.save_to_file(None)
+        with open('Rectangle.json', 'r') as file:
+            read = file.read()
+        self.assertEqual(read, '[]')
+
+        Rectangle.save_to_file([r1])
+        with open('Rectangle.json', 'r') as file:
+            read = file.read()
+            expected_op = ('[{"id": 123, "width": 10, "height": 20,'
+                           ' "x": 1, "y": 2}]')
+            self.assertEqual(read, expected_op)
+
 
 if __name__ == '__main__':
     unittest.main()
