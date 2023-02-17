@@ -185,20 +185,23 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(str(r3), '[Rectangle] (89) 3/0 - 1/2')
 
     def test_save_to_file(self):
+        r1 = Rectangle(10, 20, 1, 2, 123)
         Rectangle.save_to_file([])
-        with open('Rectangle.json') as file:
-            self.assertEqual(file.read(), '[]')
+        with open('Rectangle.json', 'r') as file:
+            read = file.read()
+        self.assertEqual(read, '[]')
 
         Rectangle.save_to_file(None)
-        with open('Rectangle.json') as file:
-            self.assertEqual(file.read(), '[]')
+        with open('Rectangle.json', 'r') as file:
+            read = file.read()
+        self.assertEqual(read, '[]')
 
-        r1 = Rectangle(10, 20, 1, 2, 123)
         Rectangle.save_to_file([r1])
-        with open('Rectangle.json') as file:
+        with open('Rectangle.json', 'r') as file:
+            read = file.read()
             expected_op = ('[{"id": 123, "width": 10, "height": 20,'
                            ' "x": 1, "y": 2}]')
-            self.assertEqual(file.read(), expected_op)
+            self.assertEqual(read, expected_op)
 
     def test_load_from_file(self):
         r1 = Rectangle(10, 7, 2, 8)
