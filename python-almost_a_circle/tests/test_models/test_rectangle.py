@@ -5,6 +5,7 @@ import unittest
 import sys
 from io import StringIO
 from models.rectangle import Rectangle
+from models.base import Base
 
 
 class Test_Rectangle(unittest.TestCase):
@@ -36,7 +37,7 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(str(context.exception), 'width must be an integer')
 
         with self.assertRaises(ValueError) as context:
-            r = Rectangle(-10, 30)
+            r = Rectangle(-1, 2)
         self.assertEqual(str(context.exception), 'width must be > 0')
 
         with self.assertRaises(ValueError) as context:
@@ -136,7 +137,10 @@ class Test_Rectangle(unittest.TestCase):
         self.assertEqual(str(r), expected_str)
 
     def test_update(self):
-        r = Rectangle(10, 10, 10, 10)
+        r = Rectangle(10, 10, 10, 10, 10)
+        r.update()
+        self.assertEqual(str(r), '[Rectangle] (10) 10/10 - 10/10')
+
         r.update(89)
         self.assertEqual(str(r), '[Rectangle] (89) 10/10 - 10/10')
 

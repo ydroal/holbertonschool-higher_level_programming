@@ -3,6 +3,7 @@
 
 import unittest
 from models.square import Square
+from models.base import Base
 
 
 class Test_Square(unittest.TestCase):
