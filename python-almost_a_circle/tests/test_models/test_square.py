@@ -104,21 +104,22 @@ class Test_Square(unittest.TestCase):
 
     def test_save_to_file(self):
         s1 = Square(10, 5, 5, 1)
+        Square.save_to_file([s1])
+        with open('Square.json', 'r') as file:
+            read = file.read()
+            self.assertEqual(read, '[{"id": 1, "size": 10, "x": 5, "y": 5}]')
+
+    def test_save_to_file_list_with_emp(self):
         Square.save_to_file([])
         with open('Square.json', 'r') as file:
             read = file.read()
         self.assertEqual(read, '[]')
 
+    def test_save_to_file_emp2(self):
         Square.save_to_file(None)
         with open('Square.json', 'r') as file:
             read = file.read()
-        self.assertEqual(read, '[]')
-
-        Square.save_to_file([s1])
-        with open('Square.json', 'r') as file:
-            read = file.read()
-            expected_op = ('[{"id": 1, "size": 10, "x": 5, "y": 5}]')
-            self.assertEqual(read, expected_op)
+            self.assertEqual(read, '[]')
 
     def test_load_from_file(self):
         s = Square.load_from_file()
