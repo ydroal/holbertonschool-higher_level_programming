@@ -16,12 +16,12 @@ if __name__ == '__main__':
     state_name = sys.argv[4]
 
     db = MySQLdb.connect(host='localhost', port=3306, user=username,
-                        passwd=password, db=db_name)
+                         passwd=password, db=db_name)
 
     cursor = db.cursor()
 
     sql = "SELECT * FROM states\
-           WHERE name = '{}'\
+           WHERE name LIKE BINARY '{}'\
            ORDER BY id".format(state_name)
 
     cursor.execute(sql)
@@ -29,6 +29,6 @@ if __name__ == '__main__':
     rows = cursor.fetchall()
     for row in rows:
         print(row)
-    
+
     cursor.close()
     db.close()
