@@ -24,7 +24,7 @@ if __name__ == '__main__':
            LEFT JOIN cities ON states.id = cities.state_id\
            WHERE states.name LIKE BINARY %s\
            ORDER BY cities.id"
- 
+
     cursor.execute(sql, (state_name, ))
 
     rows = cursor.fetchall()
