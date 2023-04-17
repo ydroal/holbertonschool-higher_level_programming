@@ -14,5 +14,10 @@ request.get(url, (error, response, body) => {
     const filteredList = obj.filter(e => e.userId === parseInt(i)).filter(id => id.completed === true);
     res[parseInt(i)] = filteredList.length;
   }
+  Object.keys(res).forEach(key => {
+    if (res[key] === 0) {
+      delete res[key];
+    }
+  });
   console.log(res);
 });
