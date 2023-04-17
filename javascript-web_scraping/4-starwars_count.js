@@ -10,6 +10,6 @@ request.get(url, (error, response, body) => {
   }
   const movies = JSON.parse(body);
   const moviesList = movies.results;
-  const filteredList = moviesList.filter(movie => movie.characters.includes('https://swapi-api.hbtn.io/api/people/18/'));
+  const filteredList = moviesList.filter(movie => movie.characters.some(url => url.endsWith('/18/')));
   console.log(filteredList.length);
 });
